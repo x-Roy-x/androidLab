@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lab1</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="sign_up_link">Link at Sign Up</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_link">Link at Sign In</string>
+    <string name="sign_out_button">Sign Out</string>
+
+    <string name="phonePattern">[+]380[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]</string>
+    <string name="passwordPattern">.{8,}</string>
+    <string name="emailPattern">[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+</string>
+</resources>
