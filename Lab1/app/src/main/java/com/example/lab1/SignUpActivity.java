@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUpActivity extends AppCompatActivity {
+    public static final String PHONE_PATTERN = "[+]380[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]";
+    public static final String PASSWORD_PATTERN = ".{8,}";
+    public static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
     private FirebaseAuth auth;
     private EditText emailField;
     private EditText nameField;
@@ -45,30 +47,30 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void checkValidation(final String email,final String name,final String phone, final String password){
         if(name.isEmpty()){
-            nameField.setError("Please enter name!");
+            nameField.setError(getString(R.string.enter_name));
             nameField.requestFocus();
         }else if(phone.isEmpty()){
-            phoneField.setError("Please enter phone!");
+            phoneField.setError(getString(R.string.enter_phone));
             phoneField.requestFocus();
         }else if (email.isEmpty()){
-            emailField.setError("Please enter your email!");
+            emailField.setError(getString(R.string.enter_email));
             emailField.requestFocus();
         }else if(password.isEmpty()){
-            passwordField.setError("Please enter password!");
+            passwordField.setError(getString(R.string.enter_password));
             passwordField.requestFocus();
-        }else if(!phone.matches(getString(R.string.phonePattern))) {
-            Toast.makeText(SignUpActivity.this, "Phone must be 13 symbols, and starts with +380",
+        }else if(!phone.matches(PHONE_PATTERN)) {
+            Toast.makeText(SignUpActivity.this, getString(R.string.enter_phone_valid),
                     Toast.LENGTH_LONG).show();
-        }else if(!email.matches(getString(R.string.emailPattern))) {
-            Toast.makeText(SignUpActivity.this, "Invalid email!",
+        }else if(!email.matches(EMAIL_PATTERN)) {
+            Toast.makeText(SignUpActivity.this, getString(R.string.enter_email_valid),
                     Toast.LENGTH_SHORT).show();
-        }else if(!password.matches(getString(R.string.passwordPattern))){
-            Toast.makeText(SignUpActivity.this, "Password must be 8+ symbols!",
+        }else if(!password.matches(PASSWORD_PATTERN)){
+            Toast.makeText(SignUpActivity.this, getString(R.string.enter_password_valid),
                     Toast.LENGTH_SHORT).show();
         } else if(!(email.isEmpty() && password.isEmpty())){
             signUp(email,name,phone,password);
         }else {
-            Toast.makeText(SignUpActivity.this, "Something gone wrong!",
+            Toast.makeText(SignUpActivity.this, getString(R.string.wrong),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -94,13 +96,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void forSignUpSuccess(final String email, final String password){
         signIn(email, password);
-
     }
 
     private void forSignUpError(){
         Toast.makeText(SignUpActivity.this,"Error",Toast.LENGTH_LONG).show();
     }
-
 
     private void signIn(final String email, final String password) {
         auth.signInWithEmailAndPassword(email, password)
@@ -119,6 +119,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void forSignInError(){
-        Toast.makeText(SignUpActivity.this,"Error",Toast.LENGTH_LONG).show();
+        Toast.makeText(SignUpActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
     }
 }

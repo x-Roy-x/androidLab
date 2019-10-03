@@ -8,6 +8,9 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
+    public static final String PASSWORD_PATTERN = ".{8,}";
+    public static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
     private FirebaseAuth auth;
     private EditText emailField;
     private EditText passwordField;
@@ -36,21 +39,21 @@ public class SignInActivity extends AppCompatActivity {
 
     private void checkValidation(final String email, final String password){
         if (email.isEmpty()){
-            emailField.setError("Please enter your email!");
+            emailField.setError(getString(R.string.enter_email));
             emailField.requestFocus();
         }else if(password.isEmpty()){
-            passwordField.setError("Please enter password!");
+            passwordField.setError(getString(R.string.enter_password));
             passwordField.requestFocus();
-        }else if(!email.matches(getString(R.string.emailPattern))) {
-            Toast.makeText(SignInActivity.this, "Invalid email!",
+        }else if(!email.matches(EMAIL_PATTERN)) {
+            Toast.makeText(SignInActivity.this, getString(R.string.enter_email_valid),
                     Toast.LENGTH_SHORT).show();
-        }else if(!password.matches(getString(R.string.passwordPattern))){
-            Toast.makeText(SignInActivity.this, "Password must be 8+ symbols!",
+        }else if(!password.matches(PASSWORD_PATTERN)){
+            Toast.makeText(SignInActivity.this, getString(R.string.enter_password_valid),
                     Toast.LENGTH_SHORT).show();
         } else if(!(email.isEmpty() && password.isEmpty())){
             signIn(email,password);
         }else {
-            Toast.makeText(SignInActivity.this, "Something gone wrong!",
+            Toast.makeText(SignInActivity.this, getString(R.string.wrong),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -72,6 +75,6 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void forSignInError(){
-        Toast.makeText(SignInActivity.this,"Error",Toast.LENGTH_LONG).show();
+        Toast.makeText(SignInActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
     }
 }
