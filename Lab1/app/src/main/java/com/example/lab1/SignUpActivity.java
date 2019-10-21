@@ -31,43 +31,74 @@ public class SignUpActivity extends AppCompatActivity {
         phoneField = findViewById(R.id.signUpPhone);
         passwordField = findViewById(R.id.signUpPassword);
 
+        findViewById(R.id.signUpPhone).setOnClickListener(view -> {
+            final String name = nameField.getText().toString();
+
+            isValidName(name);
+        });
+        findViewById(R.id.signUpEmailAddress).setOnClickListener(view -> {
+            final String phone = phoneField.getText().toString();
+
+            isValidPhone(phone);
+        });
+        findViewById(R.id.signUpPassword).setOnClickListener(view -> {
+            final String email = emailField.getText().toString();
+
+            isValidEmail(email);
+        });
         findViewById(R.id.signUpButton).setOnClickListener(view -> {
             final String email = emailField.getText().toString();
             final String name = nameField.getText().toString();
             final String phone = phoneField.getText().toString();
             final String password = passwordField.getText().toString();
 
-            checkValidation(email,name,phone,password);
+            isValidPassword(password);
+            isValidForSignUp(email,name,phone,password);
         });
-
         findViewById(R.id.signInLink).setOnClickListener(view -> {
             this.onBackPressed();
         });
     }
 
-    private void checkValidation(final String email,final String name,final String phone, final String password){
-        if(name.isEmpty()){
-            nameField.setError(getString(R.string.enter_name));
-            nameField.requestFocus();
-        }else if(phone.isEmpty()){
-            phoneField.setError(getString(R.string.enter_phone));
-            phoneField.requestFocus();
-        }else if (email.isEmpty()){
+    private void isValidEmail(final String email){
+        if (email.isEmpty()){
             emailField.setError(getString(R.string.enter_email));
             emailField.requestFocus();
-        }else if(password.isEmpty()){
-            passwordField.setError(getString(R.string.enter_password));
-            passwordField.requestFocus();
-        }else if(!phone.matches(PHONE_PATTERN)) {
-            Toast.makeText(SignUpActivity.this, getString(R.string.enter_phone_valid),
-                    Toast.LENGTH_LONG).show();
         }else if(!email.matches(EMAIL_PATTERN)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_email_valid),
                     Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void isValidName(final String name){
+        if(name.isEmpty()){
+            nameField.setError(getString(R.string.enter_name));
+            nameField.requestFocus();
+        }
+    }
+
+    private void isValidPhone(final String phone){
+        if(phone.isEmpty()){
+            phoneField.setError(getString(R.string.enter_phone));
+            phoneField.requestFocus();
+        }else if(!phone.matches(PHONE_PATTERN)) {
+            Toast.makeText(SignUpActivity.this, getString(R.string.enter_phone_valid),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void isValidPassword(final String password){
+        if(password.isEmpty()){
+            passwordField.setError(getString(R.string.enter_password));
+            passwordField.requestFocus();
         }else if(!password.matches(PASSWORD_PATTERN)){
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_password_valid),
                     Toast.LENGTH_SHORT).show();
-        } else if(!(email.isEmpty() && password.isEmpty())){
+        }
+    }
+
+    private void isValidForSignUp(final String email,final String name,final String phone, final String password){
+        if(!(email.isEmpty() && password.isEmpty())){
             signUp(email,name,phone,password);
         }else {
             Toast.makeText(SignUpActivity.this, getString(R.string.wrong),

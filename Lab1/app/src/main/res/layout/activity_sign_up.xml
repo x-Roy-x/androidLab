@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="36dp"
+        android:hint="@string/enter_name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="36dp"
+        android:hint="@string/enter_phone"
         android:inputType="phone" />
 
     <EditText
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="36dp"
+        android:hint="@string/enter_email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -38,6 +41,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginBottom="36dp"
+        android:hint="@string/enter_password"
         android:inputType="textPassword" />
 
     <Button
