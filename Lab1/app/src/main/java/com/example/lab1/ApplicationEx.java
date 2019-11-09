@@ -16,7 +16,7 @@ public class ApplicationEx extends Application {
         return apiService;
     }
 
-    final ApiService createApiService(){
+    public ApiService createApiService(){
          final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://us-central1-androidlab-d5015.cloudfunctions.net/hospital/")
                 .addConverterFactory(GsonConverterFactory.create())

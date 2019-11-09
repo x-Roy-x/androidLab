@@ -52,6 +52,9 @@ public class SignUpActivity extends AppCompatActivity {
             final String phone = phoneField.getText().toString();
             final String password = passwordField.getText().toString();
 
+            isValidName(name);
+            isValidPhone(phone);
+            isValidEmail(email);
             isValidPassword(password);
             isValidForSignUp(email,name,phone,password);
         });
@@ -64,7 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
         if (email.isEmpty()){
             emailField.setError(getString(R.string.enter_email));
             emailField.requestFocus();
-        }else if(!email.matches(EMAIL_PATTERN)) {
+        }if(!email.matches(EMAIL_PATTERN)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_email_valid),
                     Toast.LENGTH_SHORT).show();
         }
@@ -91,7 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(password.isEmpty()){
             passwordField.setError(getString(R.string.enter_password));
             passwordField.requestFocus();
-        }else if(!password.matches(PASSWORD_PATTERN)){
+        }if(!password.matches(PASSWORD_PATTERN)){
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_password_valid),
                     Toast.LENGTH_SHORT).show();
         }

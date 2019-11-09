@@ -1,16 +1,17 @@
 package com.example.lab1;
 
 public class Hospital {
-    final String hospitalBuilding;
-    final String ward;
-    final String fullNamePatient;
-    final String pressure;
-    final String temperature;
-    final String palpitation;
-    final String photoUrl;
+    private final String hospitalBuilding;
+    private final String ward;
+    private final String fullNamePatient;
+    private final String pressure;
+    private final String temperature;
+    private final String palpitation;
+    private final String photoUrl;
 
-    public Hospital(String hospitalBuilding, String ward, String fullNamePatient, String pressure,
-                    String temperature, String palpitation, String photoUrl) {
+    public Hospital(final String hospitalBuilding, final String ward, final String fullNamePatient,
+                    final String pressure, final String temperature, final String palpitation,
+                    final String photoUrl) {
         this.hospitalBuilding = hospitalBuilding;
         this.ward = ward;
         this.fullNamePatient = fullNamePatient;
