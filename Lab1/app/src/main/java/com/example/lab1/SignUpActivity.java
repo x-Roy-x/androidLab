@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(phone.isEmpty()){
             phoneField.setError(getString(R.string.enter_phone));
             phoneField.requestFocus();
-        }else if(!phone.matches(PHONE_PATTERN)) {
+        }if(!phone.matches(PHONE_PATTERN)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_phone_valid),
                     Toast.LENGTH_LONG).show();
         }
