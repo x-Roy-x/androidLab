@@ -14,6 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WelcomeActivity extends AppCompatActivity {
+
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private LinearLayout linearLayout;
@@ -26,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         initViews();
         registerNetworkMonitoring();
-        showHospital();
+        showHospitaList();
     }
 
     private void registerNetworkMonitoring() {
@@ -41,10 +42,10 @@ public class WelcomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         linearLayout = findViewById(R.id.main);
         swipeRefreshLayout = findViewById(R.id.data_list_swipe_refresh);
-        swipeToRefresh();
+        updateHospitalData();
     }
 
-    private  void showHospital(){
+    private  void showHospitaList(){
         final ApiService apiService = ((ApplicationEx) getApplication()).getApiService ();
         final Call<List<Hospital>> call = apiService.getHospitalData();
 
@@ -62,9 +63,9 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
     }
-    private void swipeToRefresh(){
+    private void updateHospitalData(){
         swipeRefreshLayout.setOnRefreshListener(() -> {
-                    showHospital();
+                    showHospitaList();
                     swipeRefreshLayout.setRefreshing(true);
                 }
         );

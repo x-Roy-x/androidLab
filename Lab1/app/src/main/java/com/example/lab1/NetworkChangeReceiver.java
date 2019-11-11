@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.android.material.snackbar.Snackbar;
 
 public class NetworkChangeReceiver extends BroadcastReceiver {
+
     private View view;
 
     public NetworkChangeReceiver(View view) {
@@ -18,10 +19,10 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent intent) {
-        final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        final NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        final ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
         if (activeNetwork == null) {
-            Snackbar.make(view, "No Internet connection", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, R.string.internet_no_connection, Snackbar.LENGTH_LONG).show();
         }
     }
 }

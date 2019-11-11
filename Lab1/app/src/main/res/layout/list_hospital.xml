@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/value_hospitalBuilding"/>
             <TextView
-                android:id="@+id/hospitalBuilding"
+                android:id="@+id/hospital_building"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/value_fullNamePatient"/>
             <TextView
-                android:id="@+id/fullNamePatient"
+                android:id="@+id/full_name_patient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.lab1;
 
 public class Hospital {
+
     private final String hospitalBuilding;
     private final String ward;
     private final String fullNamePatient;

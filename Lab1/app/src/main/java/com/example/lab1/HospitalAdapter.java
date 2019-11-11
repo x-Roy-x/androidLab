@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder> {
+
     private List<Hospital> hospitalList;
 
     public HospitalAdapter(List<Hospital> hospitalList) {
@@ -26,14 +27,14 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HospitalViewHolder holder, int position) {
-        holder.fullNamePatient.setText (hospitalList.get (position).getFullNamePatient ());
-        holder.hospitalBuilding.setText (hospitalList.get (position).getHospitalBuilding ());
-        holder.ward.setText (hospitalList.get (position).getWard ());
-        holder.pressure.setText (hospitalList.get (position).getPressure ());
-        holder.temperature.setText (hospitalList.get (position).getTemperature ());
-        holder.palpitation.setText (hospitalList.get (position).getPalpitation ());
-        Picasso.get ().load (hospitalList.get (position).getPhotoUrl ()).into (holder.photoUrl);
+    public void onBindViewHolder(@NonNull HospitalViewHolder holder, int position){
+        holder.fullNamePatient.setText(hospitalList.get(position).getFullNamePatient());
+        holder.hospitalBuilding.setText(hospitalList.get(position).getHospitalBuilding());
+        holder.ward.setText(hospitalList.get(position).getWard());
+        holder.pressure.setText(hospitalList.get(position).getPressure());
+        holder.temperature.setText(hospitalList.get(position).getTemperature());
+        holder.palpitation.setText(hospitalList.get(position).getPalpitation());
+        Picasso.get().load(hospitalList.get(position).getPhotoUrl()).into(holder.photoUrl);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         return hospitalList.size ();
     }
 
-    static class HospitalViewHolder extends RecyclerView.ViewHolder {
+    public class HospitalViewHolder extends RecyclerView.ViewHolder {
         private TextView hospitalBuilding;
         private TextView ward;
         private TextView fullNamePatient;
@@ -50,12 +51,12 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         private TextView palpitation;
         private ImageView photoUrl;
 
-        HospitalViewHolder(View view) {
+        private HospitalViewHolder(View view) {
             super (view);
             photoUrl = view.findViewById (R.id.image);
-            hospitalBuilding = view.findViewById (R.id.hospitalBuilding);
+            hospitalBuilding = view.findViewById (R.id.hospital_building);
             ward = view.findViewById (R.id.ward);
-            fullNamePatient = view.findViewById (R.id.fullNamePatient);
+            fullNamePatient = view.findViewById (R.id.full_name_patient);
             pressure = view.findViewById (R.id.pressure);
             temperature = view.findViewById (R.id.temperature);
             palpitation = view.findViewById (R.id.palpitation);

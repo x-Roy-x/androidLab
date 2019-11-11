@@ -5,6 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApplicationEx extends Application {
+
     private ApiService apiService;
 
     public void onCreate()  {
