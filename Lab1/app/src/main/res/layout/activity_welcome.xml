@@ -5,19 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="16dp"
+    android:id="@+id/main"
     tools:context=".WelcomeActivity">
 
-    <TextView
-        android:id="@+id/welcomeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="36dp"
-        android:text="TextView" />
-
-    <Button
-        android:id="@+id/signOutButton"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/data_list_swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_out_button" />
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/data_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

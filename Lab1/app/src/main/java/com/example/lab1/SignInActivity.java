@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
+
     private FirebaseAuth auth;
     private EditText emailField;
     private EditText passwordField;

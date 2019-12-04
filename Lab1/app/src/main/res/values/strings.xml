@@ -15,4 +15,14 @@
     <string name="enter_password_valid">Password must be 8+ symbols!</string>
     <string name="wrong">Something gone wrong!</string>
     <string name="error">Error</string>
+
+    <string name="internet_no_connection">No Internet connection</string>
+    <string name="error_update">Update error</string>
+
+    <string name="value_hospitalBuilding">Hospital Building :</string>
+    <string name="value_ward">Ward :</string>
+    <string name="value_fullNamePatient">Name :</string>
+    <string name="value_pressure">Pressure :</string>
+    <string name="value_temperature">Temperature :</string>
+    <string name="value_palpitation">Palpitation :</string>
 </resources>

@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUpActivity extends AppCompatActivity {
+
     public static final String PHONE_PATTERN = "[+]380[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]";
     public static final String PASSWORD_PATTERN = ".{8,}";
     public static final String EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -52,6 +53,9 @@ public class SignUpActivity extends AppCompatActivity {
             final String phone = phoneField.getText().toString();
             final String password = passwordField.getText().toString();
 
+            isValidName(name);
+            isValidPhone(phone);
+            isValidEmail(email);
             isValidPassword(password);
             isValidForSignUp(email,name,phone,password);
         });
@@ -64,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
         if (email.isEmpty()){
             emailField.setError(getString(R.string.enter_email));
             emailField.requestFocus();
-        }else if(!email.matches(EMAIL_PATTERN)) {
+        }if(!email.matches(EMAIL_PATTERN)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_email_valid),
                     Toast.LENGTH_SHORT).show();
         }
@@ -81,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(phone.isEmpty()){
             phoneField.setError(getString(R.string.enter_phone));
             phoneField.requestFocus();
-        }else if(!phone.matches(PHONE_PATTERN)) {
+        }if(!phone.matches(PHONE_PATTERN)) {
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_phone_valid),
                     Toast.LENGTH_LONG).show();
         }
@@ -91,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity {
         if(password.isEmpty()){
             passwordField.setError(getString(R.string.enter_password));
             passwordField.requestFocus();
-        }else if(!password.matches(PASSWORD_PATTERN)){
+        }if(!password.matches(PASSWORD_PATTERN)){
             Toast.makeText(SignUpActivity.this, getString(R.string.enter_password_valid),
                     Toast.LENGTH_SHORT).show();
         }
