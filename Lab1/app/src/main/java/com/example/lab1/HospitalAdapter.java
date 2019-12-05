@@ -1,9 +1,12 @@
 package com.example.lab1;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,9 +16,11 @@ import java.util.List;
 public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder> {
 
     private List<Hospital> hospitalList;
+    private Context context;
 
-    public HospitalAdapter(List<Hospital> hospitalList) {
+    public HospitalAdapter(Context context, List<Hospital> hospitalList) {
         this.hospitalList = hospitalList;
+        this.context = context;
     }
 
     @NonNull
@@ -35,6 +40,21 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         holder.temperature.setText(hospitalList.get(position).getTemperature());
         holder.palpitation.setText(hospitalList.get(position).getPalpitation());
         Picasso.get().load(hospitalList.get(position).getPhotoUrl()).into(holder.photoUrl);
+
+        holder.linearLayout.setOnClickListener(view -> getDataDetails(position));
+    }
+
+    private void getDataDetails(int position) {
+        Intent intent = new Intent(context, HospitalData.class);
+        intent.putExtra("building", hospitalList.get(position).getHospitalBuilding());
+        intent.putExtra("ward", hospitalList.get(position).getWard());
+        intent.putExtra("name", hospitalList.get(position).getFullNamePatient());
+        intent.putExtra("pressure", hospitalList.get(position).getPressure());
+        intent.putExtra("temperature", hospitalList.get(position).getTemperature());
+        intent.putExtra("palpitation", hospitalList.get(position).getPalpitation());
+        intent.putExtra("avatar", hospitalList.get(position).getPhotoUrl());
+
+        context.startActivity(intent);
     }
 
     @Override
@@ -50,6 +70,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         private TextView temperature;
         private TextView palpitation;
         private ImageView photoUrl;
+        private LinearLayout linearLayout;
 
         private HospitalViewHolder(View view) {
             super (view);
@@ -60,6 +81,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             pressure = view.findViewById (R.id.pressure);
             temperature = view.findViewById (R.id.temperature);
             palpitation = view.findViewById (R.id.palpitation);
+            linearLayout = view.findViewById(R.id.hospital_list);
         }
     }
 }

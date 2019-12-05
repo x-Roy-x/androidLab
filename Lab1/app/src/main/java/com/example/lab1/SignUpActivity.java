@@ -149,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void forSignInSuccess(){
-        final Intent intent = new Intent(this, WelcomeActivity.class);
+        final Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
