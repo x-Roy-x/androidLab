@@ -33,6 +33,11 @@ public class SignInActivity extends AppCompatActivity {
             final Intent intent = new Intent(this, SignUpActivity.class);
             startActivity(intent);
         });
+
+        if (auth.getCurrentUser() != null){
+            openMainActivity();
+
+        }
     }
 
     private void signIn(final String email, final String password) {
@@ -47,11 +52,15 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void forSignInSuccess(){
-        final Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        openMainActivity();
     }
 
     private void forSignInError(){
         Toast.makeText(SignInActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
+    }
+
+    private void openMainActivity(){
+        final Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

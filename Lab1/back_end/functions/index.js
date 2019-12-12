@@ -89,6 +89,22 @@ const json =
 "palpitation":"60",
 "photoUrl":"https://m.media-amazon.com/images/M/MV5BYzg5YmUyNGMtMThiNS00MjA2LTgwZDctNDlhM2RkZDNmZmRkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg"
 },
+{"hospitalBuilding":"Hospital 1",
+"ward":"23",
+"fullNamePatient":"Roi",
+"pressure":"120",
+"temperature":"36",
+"palpitation":"60",
+"photoUrl":"https://m.media-amazon.com/images/M/MV5BYzg5YmUyNGMtMThiNS00MjA2LTgwZDctNDlhM2RkZDNmZmRkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg"
+},
+{"hospitalBuilding":"Hospital 2",
+"ward":"45",
+"fullNamePatient":"Roi Votalii",
+"pressure":"120",
+"temperature":"36",
+"palpitation":"60",
+"photoUrl":"https://m.media-amazon.com/images/M/MV5BYzg5YmUyNGMtMThiNS00MjA2LTgwZDctNDlhM2RkZDNmZmRkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_UX182_CR0,0,182,268_AL_.jpg"
+},
 {"hospitalBuilding":"True lies",
 "ward":"1994",
 "fullNamePatient":"Roi",

@@ -42,6 +42,7 @@ public class ProfileEditor extends Fragment {
     private Button nameRefresh;
     private Button emailRefresh;
     private Button photoUpload;
+    private Button signOutButton;
     private TextView name;
     private TextView email;
     private ImageView avatar;
@@ -67,6 +68,7 @@ public class ProfileEditor extends Fragment {
         nameRefresh = root.findViewById(R.id.refresh_name);
         emailRefresh = root.findViewById(R.id.refresh_email);
         photoUpload = root.findViewById(R.id.upload_avatar);
+        signOutButton = root.findViewById(R.id.sign_out_button);
         avatar = root.findViewById(R.id.user_avatar);
         folder = FirebaseStorage
                 .getInstance()
@@ -92,6 +94,7 @@ public class ProfileEditor extends Fragment {
         updateName();
         updateEmail();
         uploadAvatar();
+        onSignOut();
     }
 
     private void uploadAvatar() {
@@ -170,6 +173,15 @@ public class ProfileEditor extends Fragment {
                 });
     }
 
+    private void onSignOut() {
+        signOutButton.setOnClickListener(view -> {
+            auth.signOut();
+            startActivity(new Intent(getActivity(), SignInActivity.class));
+            Objects.requireNonNull(getActivity()).overridePendingTransition(0, 0);
+        });
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -179,13 +191,13 @@ public class ProfileEditor extends Fragment {
                 Uri ImageData = Objects.requireNonNull(data).getData();
                 imageName.putFile(Objects.requireNonNull(ImageData))
                         .addOnSuccessListener(taskSnapshot ->
+                                imageName.getDownloadUrl()
+                                        .addOnSuccessListener(uri ->
+                                                Picasso.get()
+                                                        .load(uri.toString())
+                                                        .into(avatar)));
                                 Toast.makeText(getActivity(), getString(R.string.updated),
-                                Toast.LENGTH_SHORT).show());
-                imageName.getDownloadUrl()
-                        .addOnSuccessListener(uri ->
-                                Picasso.get()
-                                .load(uri.toString())
-                                .into(avatar));
+                                Toast.LENGTH_SHORT).show();
             }
         }
     }

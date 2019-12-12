@@ -19,9 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_helper);
-        ViewPager viewPager = findViewById(R.id.helper);
+
+        ViewPager viewPager = findViewById(R.id.view_pager);
         TabNavigation adapter = new TabNavigation(this, getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = findViewById(R.id.tabs);
